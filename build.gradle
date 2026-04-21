@@ -16,19 +16,19 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-cache'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-web'
-    implementation ('org.thymeleaf:thymeleaf-spring4:3.0.15.RELEASE') {
+    implementation ('org.thymeleaf:thymeleaf-spring5:3.0.15.RELEASE') {
         force = true
     }
     implementation ('org.springframework.boot:spring-boot-starter-thymeleaf') {
         exclude(group: 'nz.net.ultraq.thymeleaf', module: 'thymeleaf-layout-dialect')
     }
     implementation 'javax.cache:cache-api'
-    implementation 'org.ehcache:ehcache:3.2.2'
-    implementation 'org.webjars:webjars-locator:0.45'
+    implementation 'org.ehcache:ehcache:3.10.8'
+    implementation 'org.webjars:webjars-locator:0.52'
     implementation 'org.webjars:jquery:2.2.4'
     implementation 'org.webjars:jquery-ui:1.11.4'
     implementation 'org.webjars:bootstrap:3.3.6'
-    runtimeOnly 'org.hsqldb:hsqldb:2.3.5'
+    runtimeOnly 'org.hsqldb:hsqldb:2.7.4'
     runtimeOnly 'mysql:mysql-connector-java:5.1.42'
     runtimeOnly 'org.springframework.boot:spring-boot-devtools'
     testImplementation platform('org.springframework.boot:spring-boot-starter-test')

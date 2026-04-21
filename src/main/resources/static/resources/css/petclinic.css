@@ -127,7 +127,7 @@ dl.dl-horizontal dd {
     margin: 0;
 }
 
-.table-condensed {
+.table.table-sm {
     width: 100%;
     font-size: 0.9rem;
 }

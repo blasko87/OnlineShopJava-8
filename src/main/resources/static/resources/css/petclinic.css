@@ -1,0 +1,142 @@
+/*
+ * PetClinic custom styling (Bootstrap 5 compatible).
+ * Replaces the previous LESS/wro4j pipeline with a small hand-written
+ * stylesheet that layers the Spring "petclinic" brand on top of the
+ * stock Bootstrap 5 styles loaded from the webjars.
+ */
+
+@font-face {
+    font-family: 'Varela Round';
+    src: url('../fonts/varela_round-webfont.eot');
+    src: url('../fonts/varela_round-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/varela_round-webfont.woff') format('woff'),
+         url('../fonts/varela_round-webfont.ttf') format('truetype'),
+         url('../fonts/varela_round-webfont.svg#varela_roundregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../fonts/montserrat-webfont.eot');
+    src: url('../fonts/montserrat-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/montserrat-webfont.woff') format('woff'),
+         url('../fonts/montserrat-webfont.ttf') format('truetype'),
+         url('../fonts/montserrat-webfont.svg#montserratregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    font-family: 'Varela Round', 'Helvetica Neue', Arial, sans-serif;
+    background-color: #fff;
+    color: #34302d;
+}
+
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+    font-family: 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
+    font-weight: 500;
+    color: #6db33f;
+}
+
+a, a:visited {
+    color: #6db33f;
+}
+
+a:hover, a:active {
+    color: #5fa134;
+}
+
+.navbar {
+    background-color: #34302d;
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+.navbar .navbar-brand {
+    display: inline-block;
+    width: 132px;
+    height: 52px;
+    background: transparent url('../images/spring-logo-dataflow.png') no-repeat center/contain;
+    overflow: hidden;
+    text-indent: -9999px;
+}
+
+.navbar .nav-link,
+.navbar .navbar-nav .nav-link {
+    color: #eaeaea;
+}
+
+.navbar .nav-item.active > .nav-link,
+.navbar .nav-link:hover,
+.navbar .nav-link:focus {
+    color: #fff;
+    background-color: rgba(109, 179, 63, 0.2);
+    border-radius: 4px;
+}
+
+.navbar-toggler {
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+.container.xd-container {
+    padding-top: 20px;
+    padding-bottom: 40px;
+}
+
+.btn-primary,
+.btn-default {
+    background-color: #6db33f;
+    border-color: #5fa134;
+    color: #fff;
+}
+
+.btn-primary:hover,
+.btn-default:hover,
+.btn-primary:focus,
+.btn-default:focus {
+    background-color: #5fa134;
+    border-color: #4e8a2b;
+    color: #fff;
+}
+
+.table > :not(caption) > * > * {
+    vertical-align: middle;
+}
+
+.table thead th {
+    background-color: #f6f8f4;
+    color: #34302d;
+}
+
+dl.dl-horizontal {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    column-gap: 1rem;
+    row-gap: 0.25rem;
+    margin-bottom: 0;
+}
+
+dl.dl-horizontal dt {
+    font-weight: 500;
+    text-align: right;
+}
+
+dl.dl-horizontal dd {
+    margin: 0;
+}
+
+.table-condensed {
+    width: 100%;
+    font-size: 0.9rem;
+}
+
+.form-horizontal .form-group {
+    margin-bottom: 1rem;
+}
+
+footer img {
+    max-width: 200px;
+    margin: 20px auto;
+}

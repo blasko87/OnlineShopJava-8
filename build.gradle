@@ -21,7 +21,11 @@ dependencies {
         exclude(group: 'nz.net.ultraq.thymeleaf', module: 'thymeleaf-layout-dialect')
     }
     implementation 'javax.cache:cache-api'
-    implementation 'org.ehcache:ehcache'
+    implementation('org.ehcache:ehcache') {
+        capabilities {
+            requireCapability('org.ehcache:ehcache-jakarta')
+        }
+    }
     implementation 'org.webjars:webjars-locator:0.52'
     implementation 'org.webjars:jquery:3.7.1'
     implementation 'org.webjars:jquery-ui:1.13.3'

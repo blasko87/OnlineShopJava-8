@@ -43,13 +43,12 @@
       <tr th:each="pet : ${owner.pets}">
         <td valign="top">
           <dl class="row">
-            <dt>Name</dt>
-            <dd th:text="${pet.name}" /></dd>
-            <dt>Birth Date</dt>
-            <dd
-              th:text="${#calendars.format(pet.birthDate, 'yyyy-MM-dd')}" /></dd>
-            <dt>Type</dt>
-            <dd th:text="${pet.type}" /></dd>
+            <dt class="col-sm-3">Name</dt>
+            <dd class="col-sm-9" th:text="${pet.name}"></dd>
+            <dt class="col-sm-3">Birth Date</dt>
+            <dd class="col-sm-9" th:text="${#calendars.format(pet.birthDate, 'yyyy-MM-dd')}"></dd>
+            <dt class="col-sm-3">Type</dt>
+            <dd class="col-sm-9" th:text="${pet.type}"></dd>
           </dl>
         </td>
         <td valign="top">

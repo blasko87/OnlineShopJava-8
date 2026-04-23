@@ -10,24 +10,23 @@
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
-    <version>2.1.18.RELEASE</version>
+    <version>3.4.5</version>
   </parent>
   <name>petclinic</name>
 
   <properties>
 
     <!-- Generic properties -->
-    <java.version>11</java.version>
+    <java.version>17</java.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
     <!-- Web dependencies -->
-    <webjars-locator.version>0.45</webjars-locator.version>
-    <webjars-bootstrap.version>3.3.6</webjars-bootstrap.version>
-    <webjars-jquery-ui.version>1.11.4</webjars-jquery-ui.version>
-    <webjars-jquery.version>2.2.4</webjars-jquery.version>
-    <wro4j.version>1.9.0</wro4j.version>
-    <thymeleaf.version>3.0.15.RELEASE</thymeleaf.version>
+    <webjars-locator.version>0.52</webjars-locator.version>
+    <webjars-bootstrap.version>5.3.3</webjars-bootstrap.version>
+    <webjars-jquery-ui.version>1.14.1</webjars-jquery-ui.version>
+    <webjars-jquery.version>3.7.1</webjars-jquery.version>
+    <wro4j.version>1.10.1</wro4j.version>
 
     <cobertura.version>2.7</cobertura.version>
 
@@ -37,12 +36,12 @@
     <dependency>
       <groupId>jakarta.inject</groupId>
       <artifactId>jakarta.inject-api</artifactId>
-      <version>1.0.3</version>
+      <version>2.0.1</version>
     </dependency>
     <dependency>
         <groupId>jakarta.xml.bind</groupId>
         <artifactId>jakarta.xml.bind-api</artifactId>
-        <version>2.3.3</version>
+        <version>4.0.2</version>
     </dependency>
     <!-- Spring and Spring Boot dependencies -->
     <dependency>
@@ -60,6 +59,10 @@
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-validation</artifactId>
     </dependency>
     <dependency>
       <groupId>org.springframework.boot</groupId>
@@ -84,8 +87,8 @@
       <scope>runtime</scope>
     </dependency>
     <dependency>
-      <groupId>mysql</groupId>
-      <artifactId>mysql-connector-java</artifactId>
+      <groupId>com.mysql</groupId>
+      <artifactId>mysql-connector-j</artifactId>
       <scope>runtime</scope>
     </dependency>
 
@@ -134,7 +137,7 @@
 <plugin>
   <groupId>org.openrewrite.maven</groupId>
   <artifactId>rewrite-maven-plugin</artifactId>
-  <version>5.2.6</version>
+  <version>5.46.0</version>
   <configuration>
     <activeRecipes>
       <recipe>org.openrewrite.java.format.AutoFormat</recipe>
@@ -155,8 +158,8 @@
               <additionalProperties>
                 <encoding.source>${project.build.sourceEncoding}</encoding.source>
                 <encoding.reporting>${project.reporting.outputEncoding}</encoding.reporting>
-                <java.source>${maven.compiler.source}</java.source>
-                <java.target>${maven.compiler.target}</java.target>
+                <java.source>${java.version}</java.source>
+                <java.target>${java.version}</java.target>
               </additionalProperties>
             </configuration>
           </execution>
@@ -166,8 +169,8 @@
       <!-- Spring Boot Actuator displays build-related information if a git.properties
         file is present at the classpath -->
       <plugin>
-        <groupId>pl.project13.maven</groupId>
-        <artifactId>git-commit-id-plugin</artifactId>
+        <groupId>io.github.git-commit-id</groupId>
+        <artifactId>git-commit-id-maven-plugin</artifactId>
         <executions>
           <execution>
             <goals>
@@ -205,10 +208,19 @@
           <contextFolder>${basedir}/src/main/less</contextFolder>
         </configuration>
         <dependencies>
+          <!-- Pin bootstrap 3 for WRO4J LESS compilation (wro.xml references 3.3.6 paths);
+               the application webjars-bootstrap.version is upgraded independently to 5.x. -->
           <dependency>
             <groupId>org.webjars</groupId>
             <artifactId>bootstrap</artifactId>
-            <version>${webjars-bootstrap.version}</version>
+            <version>3.3.6</version>
+          </dependency>
+          <!-- Workaround for wro4j-maven-plugin version conflict on minimatch:
+               https://github.com/wro4j/wro4j/issues/1129 -->
+          <dependency>
+            <groupId>org.webjars.npm</groupId>
+            <artifactId>glob</artifactId>
+            <version>7.2.0</version>
           </dependency>
         </dependencies>
       </plugin>
